@@ -1,0 +1,6 @@
+@startuml
+    actor "Food critic" as fc
+    usecase "Eat Food" as UC1
+    fc --> UC1
+
+@enduml
