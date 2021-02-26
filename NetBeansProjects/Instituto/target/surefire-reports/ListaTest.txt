@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: ListaTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.07 s <<< FAILURE! - in ListaTest
+buscarTest  Time elapsed: 0.016 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: La lista no contiene el dni,se esperaba 44444 ==> expected: <true> but was: <false>
+	at ListaTest.buscarTest(ListaTest.java:81)
+

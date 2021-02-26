@@ -19,7 +19,7 @@ public class PrincipalLoteriaPrimitiva {
         System.out.println("¿Cuantos numeros son los premiados?");
         int numero = sn.nextInt();
         pedirNumerosPremiados(listaNumeros, numero);
-        mostrarLista(listaNumeros);
+        insertarOrdenado(listaNumeros);
     }
     
     /**
@@ -41,13 +41,27 @@ public class PrincipalLoteriaPrimitiva {
     }
     
     /**
-     * Metodo para mostrar la lista de los numeros
+     * Metodo para mostrar la lista de los numeros ordenados ascendentes
      * @param listaNumeros 
      */
-    private static void mostrarLista(ArrayList<Integer> listaNumeros){
-        for (int i = 0; i < listaNumeros.size(); i++) {
-            Collections.sort(listaNumeros);
-            System.out.println("El " + (i+1) + "º numero premiado es: " + listaNumeros.get(i));
+//    private static void mostrarLista(ArrayList<Integer> listaNumeros){
+//        for (int i = 0; i < listaNumeros.size(); i++) {
+//            Collections.sort(listaNumeros);           
+//            System.out.println("El " + (i+1) + "º numero premiado es: " + listaNumeros.get(i));
+//        }
+//    }
+    public void insertarOrdenado(Integer numero) {
+         
+        if(listaNumeros.size() > 0){
+            for (int i = 0; i < listaNumeros.size(); i++) {
+                if (numero < listaNumeros.get(i)) {
+                    listaNumeros.sort((o1, o2) -> o1.compareTo(o2));
+                }
+            }
+        }else{
+            listaNumeros.add(numero);
         }
+        
+        
     }
 }

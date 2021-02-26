@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: VehiculoTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.039 s <<< FAILURE! - in VehiculoTest
+addVehiculoTest  Time elapsed: 0.029 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: El vehiculo no se ha agregado correctamente ==> expected: <true> but was: <false>
+	at VehiculoTest.addVehiculoTest(VehiculoTest.java:63)
+
