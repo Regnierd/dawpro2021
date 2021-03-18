@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: CodigoPostalTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in CodigoPostalTest
+errorTamanioIncorrectoCadenaTest  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: El tamanio no es correcto ==> expected: <true> but was: <false>
+	at CodigoPostalTest.errorTamanioIncorrectoCadenaTest(CodigoPostalTest.java:66)
+

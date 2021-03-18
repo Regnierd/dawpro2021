@@ -41,17 +41,17 @@ public class Gestion {
      * @param matricula 
      */
     public void eliminar(String matricula){
-        for (int i = 0; i < coches.size(); i++) {
-            if(coches.get(i).equals(matricula)){
-                coches.remove(coches.get(i));
-            }
+        Coche coche = buscar(matricula);
+        if(coche != null){
+            coches.remove(coche);
         }
+        
     }
     
     /**
      * Metodo para buscar un coche pasandole la matricula
      * @param matricula
-     * @return 
+     * @return coche
      */
     public Coche buscar(String matricula){
         Coche cocheEncontrado = null;

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: FechaTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in FechaTest
+validarErrorFecha  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: La fecha no es correcta ==> expected: <false> but was: <true>
+	at FechaTest.validarErrorFecha(FechaTest.java:60)
+

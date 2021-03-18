@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="GestionTest" time="0.04" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="GestionTest" time="0.043" tests="3" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="ES"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-14.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\javiv\AppData\Local\Temp\surefire14919564841664071656\surefirebooter2414211050621862658.jar C:\Users\javiv\AppData\Local\Temp\surefire14919564841664071656 2021-02-26T17-39-24_518-jvmRun1 surefire17531459750643353391tmp surefire_017056064408268003051tmp"/>
+    <property name="sun.java.command" value="C:\Users\javiv\AppData\Local\Temp\surefire3521010146350068705\surefirebooter7885732830571655403.jar C:\Users\javiv\AppData\Local\Temp\surefire3521010146350068705 2021-03-05T11-12-57_308-jvmRun1 surefire7780729805561206313tmp surefire_04939334985555023401tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="GestionTest"/>
     <property name="surefire.test.class.path" value="C:\Users\javiv\Desktop\NetBeansProjects\TallerMecanico\target\test-classes;C:\Users\javiv\Desktop\NetBeansProjects\TallerMecanico\target\classes;C:\Users\javiv\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\javiv\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\javiv\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\javiv\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\javiv\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\javiv\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\javiv\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\javiv\AppData\Local\Temp\surefire14919564841664071656\surefirebooter2414211050621862658.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\javiv\AppData\Local\Temp\surefire3521010146350068705\surefirebooter7885732830571655403.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.2+12-46"/>
@@ -50,14 +50,18 @@
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-14.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk-14.0.2\bin;C:\Program Files\apache-maven-3.6.3\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Users\javiv\AppData\Local\Microsoft\WindowsApps;C:\Users\javiv\AppData\Local\GitHubDesktop\bin;C:\Users\javiv\AppData\Roaming\Composer\vendor\bin;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-14.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk-14.0.2\bin;C:\Program Files\apache-maven-3.6.3\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Users\javiv\AppData\Local\Microsoft\WindowsApps;C:\Users\javiv\AppData\Local\GitHubDesktop\bin;C:\Users\javiv\AppData\Roaming\Composer\vendor\bin;C:\Users\javiv\AppData\Local\Programs\Microsoft VS Code\bin;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="14.0.2+12-46"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="buscarTest" classname="GestionTest" time="0.031"/>
-  <testcase name="eliminarTest" classname="GestionTest" time="0"/>
+  <testcase name="buscarTest" classname="GestionTest" time="0.024"/>
+  <testcase name="eliminarTest" classname="GestionTest" time="0.009">
+    <failure message="El tamanio de la lista no esel esperado, se esperaba 0 ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: El tamanio de la lista no esel esperado, se esperaba 0 ==> expected: <true> but was: <false>
+	at GestionTest.eliminarTest(GestionTest.java:50)
+]]></failure>
+  </testcase>
   <testcase name="insertarTest" classname="GestionTest" time="0.001"/>
 </testsuite>

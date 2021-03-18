@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: GestionTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.04 s - in GestionTest
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.043 s <<< FAILURE! - in GestionTest
+eliminarTest  Time elapsed: 0.009 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: El tamanio de la lista no esel esperado, se esperaba 0 ==> expected: <true> but was: <false>
+	at GestionTest.eliminarTest(GestionTest.java:50)
+
