@@ -40,11 +40,7 @@ public class FicheroTest {
     
     @AfterEach
     public void tearDown() {
-        try {
-            fichero.eliminar(nombreFichero);
-        } catch (ExceptionPropia ex) {
-            Assertions.fail("Se ha producido un error eliminando el fichero");
-        }     
+          
     }
 
      @Test

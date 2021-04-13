@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Aula,es.iespuertodelacruz.javier.elementos,Persona,14,9,0,0,6,4,4,1,4,1
+Aula,es.iespuertodelacruz.javier.elementos,Profesor,5,0,0,0,2,0,1,0,1,0
+Aula,es.iespuertodelacruz.javier.elementos,Alumno,7,38,2,4,3,10,3,5,1,4
+Aula,es.iespuertodelacruz.javier.elementos,Fichero,56,66,5,5,16,23,6,5,2,4
+Aula,es.iespuertodelacruz.javier.elementos,GestionHashMap,10,80,0,6,3,22,1,9,1,6
+Aula,es.iespuertodelacruz.javier.elementos,GestionArrayList,2,92,4,6,1,27,4,8,0,7
+Aula,es.iespuertodelacruz.javier.exceptions,FicheroException,9,0,0,0,4,0,2,0,2,0
+Aula,es.iespuertodelacruz.javier.exceptions,AlumnoException,5,4,0,0,2,2,1,1,1,1

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Planta.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GestionFloristeria</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier</a> &gt; <span class="el_source">Planta.java</span></div><h1>Planta.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier;
+
+import java.util.Objects;
+
+public class Planta {
+    String id;
+    String nombre;
+    int tamanio;
+    float precioBase;
+    float precioFinal;
+    int articulos;
+<span class="fc" id="L12">    final int GANANCIA = 15; </span>
+
+    /**
+     * Constructor de la planta
+     * @param id de la planta
+     * @param nombre de la planta
+     * @param tamanio de la planta
+     * @param precioBase de la planta
+     * @param precioFinal de la planta
+     * @param articulos de la planta
+     */
+<span class="fc" id="L23">    public Planta(String id, String nombre, int tamanio, float precioBase, int articulos) {</span>
+<span class="fc" id="L24">        this.id = id;</span>
+<span class="fc" id="L25">        this.nombre = nombre;</span>
+<span class="fc" id="L26">        this.tamanio = tamanio;</span>
+<span class="fc" id="L27">        this.precioBase = precioBase;</span>
+<span class="fc" id="L28">        this.precioFinal = getPrecioBase()+(GANANCIA/100)*getPrecioBase();</span>
+<span class="fc" id="L29">        this.articulos = articulos;</span>
+<span class="fc" id="L30">    }</span>
+
+    public String getId() {
+<span class="fc" id="L33">        return this.id;</span>
+    }
+
+    public String getNombre() {
+<span class="fc" id="L37">        return this.nombre;</span>
+    }
+
+    public int getTamanio() {
+<span class="fc" id="L41">        return this.tamanio;</span>
+    }
+
+    public float getPrecioBase() {
+<span class="fc" id="L45">        return this.precioBase;</span>
+    }
+
+    public float getPrecioFinal() {
+<span class="fc" id="L49">        return this.precioFinal;</span>
+    }
+
+    public int getArticulos() {
+<span class="fc" id="L53">        return this.articulos;</span>
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (o == this)</span>
+<span class="fc" id="L60">            return true;</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">        if (!(o instanceof Planta)) {</span>
+<span class="nc" id="L62">            return false;</span>
+        }
+<span class="fc" id="L64">        Planta planta = (Planta) o;</span>
+<span class="pc bpc" id="L65" title="11 of 12 branches missed.">        return Objects.equals(id, planta.id) &amp;&amp; Objects.equals(nombre, planta.nombre) </span>
+            &amp;&amp; tamanio == planta.tamanio &amp;&amp; precioBase == planta.precioBase &amp;&amp; precioFinal
+             == planta.precioFinal &amp;&amp; articulos == planta.articulos;
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L72">        return getId() + &quot;, &quot; + getNombre() + &quot;, &quot; + getTamanio() + &quot;, &quot; + getPrecioBase() </span>
+<span class="fc" id="L73">            + &quot;, &quot; + getPrecioFinal() + &quot;, &quot; + getArticulos();</span>
+             
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

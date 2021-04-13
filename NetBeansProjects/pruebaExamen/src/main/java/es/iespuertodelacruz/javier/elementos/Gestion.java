@@ -80,18 +80,18 @@ public class Gestion {
         }
     }
     
-    /**
-     * Funcion para eliminar pasandole el dni
-     * @param dni valor que se le pasa 
-     * @return devuelve una lista de personas
-     */
-    public void eliminar1(String dni){
-        ArrayList<Persona> personasEliminar = buscar1(dni);
-        if(personasEliminar.size() != 0){
-            personas.remove(personasEliminar.get(0));
-        }
-        
-    }
+//    /**
+//     * Funcion para eliminar pasandole el dni
+//     * @param dni valor que se le pasa 
+//     * @return devuelve una lista de personas
+//     */
+//    public void eliminar1(String dni){
+//        ArrayList<Persona> personasEliminar = buscar1(dni);
+//        if(personasEliminar.size() != 0){
+//            personas.remove(personasEliminar.get(0));
+//        }
+//        
+//    }
     
     
     

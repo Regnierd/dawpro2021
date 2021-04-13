@@ -1,0 +1,8 @@
+es\iespuertodelacruz\javier\elementos\Alumno.class
+es\iespuertodelacruz\javier\elementos\GestionArrayList.class
+es\iespuertodelacruz\javier\elementos\Fichero.class
+es\iespuertodelacruz\javier\exceptions\AlumnoException.class
+es\iespuertodelacruz\javier\exceptions\FicheroException.class
+es\iespuertodelacruz\javier\elementos\Profesor.class
+es\iespuertodelacruz\javier\elementos\Persona.class
+es\iespuertodelacruz\javier\elementos\GestionHashMap.class

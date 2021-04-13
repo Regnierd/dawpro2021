@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: GestionTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.074 s <<< FAILURE! - in GestionTest
+buscarDestinoTest  Time elapsed: 0.041 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: El resultado no es el esperado, se esperaba Madrid ==> expected: <true> but was: <false>
+	at GestionTest.buscarDestinoTest(GestionTest.java:88)
+
+cantidadTest  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+	at GestionTest.cantidadTest(GestionTest.java:95)
+

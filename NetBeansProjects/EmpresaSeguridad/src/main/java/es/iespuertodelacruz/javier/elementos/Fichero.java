@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 public class Fichero{
     private String patron = "^[A-Z,a-z]+|[A-Z-a-z]+.[a-z]{3}$";
 //    private String patron = "^[A-Z,a-z]+.[a-z]{3}$";
+//    private String patron = "^[\\w]+\\.[\\w]{3}$";
     Pattern pattern;
     Matcher matcher;
     /**

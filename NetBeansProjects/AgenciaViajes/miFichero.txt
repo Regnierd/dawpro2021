@@ -1,0 +1,2 @@
+[Pasajero{, nombre=Pedro, dni=00000000A, destino=Madrid, ciudad=Paises{ciudad=Buenos Aires, pais=Argentina}
+}]

@@ -1,0 +1,12 @@
+es\iespuertodelacruz\javier\elementos\Aula.class
+es\iespuertodelacruz\javier\exceptions\ExceptionNota.class
+es\iespuertodelacruz\javier\elementos\Validacion.class
+es\iespuertodelacruz\javier\exceptions\ExceptionValidar.class
+es\iespuertodelacruz\javier\elementos\Alumno.class
+es\iespuertodelacruz\javier\elementos\Gestion.class
+es\iespuertodelacruz\javier\exceptions\FicheroException.class
+es\iespuertodelacruz\javier\elementos\Profesor.class
+es\iespuertodelacruz\javier\elementos\Nota.class
+es\iespuertodelacruz\javier\exceptions\ExceptionPersona.class
+es\iespuertodelacruz\javier\elementos\Persona.class
+es\iespuertodelacruz\javier\exceptions\ExceptionAula.class

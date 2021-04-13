@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestionHashMap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Aula</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier.elementos</a> &gt; <span class="el_source">GestionHashMap.java</span></div><h1>GestionHashMap.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier.elementos;
+
+import java.util.HashMap;
+
+import es.iespuertodelacruz.javier.exceptions.AlumnoException;
+import es.iespuertodelacruz.javier.exceptions.FicheroException;
+
+public class GestionHashMap {
+    Profesor profesor;
+    HashMap&lt;Integer, Alumno&gt; alumnos;
+    Fichero fichero;
+
+    /**
+     * Constructor por defecto
+     */
+<span class="fc" id="L16">    public GestionHashMap(){</span>
+<span class="fc" id="L17">        alumnos = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L18">        fichero = new Fichero();</span>
+<span class="fc" id="L19">    }</span>
+
+    /**
+     * Metodo para insertar a alumnos en la lista
+     * @param alumno que insertar
+     * @throws AlumnoException
+     */
+    public void insertar(Alumno alumno) throws AlumnoException{
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if(existe(alumno)){</span>
+<span class="fc" id="L28">            throw new AlumnoException(&quot;El alumno ya se encuentra en la lista&quot;);</span>
+        }else{
+<span class="fc" id="L30">            alumnos.put(alumno.getPosicion(), alumno);</span>
+        }
+        
+<span class="fc" id="L33">    }</span>
+
+    /**
+     * Funcion que devuelve un alumno pasandole su posicion
+     * @param posicion para buscar al alumno
+     * @return alumno
+     */
+    public Alumno buscar(Integer posicion){
+<span class="nc" id="L41">        Alumno alumno = null;</span>
+<span class="nc" id="L42">        alumno = alumnos.get(posicion);</span>
+<span class="nc" id="L43">        return alumno;</span>
+    }
+
+    /**
+     * Funcion que verifica que existe un alumno
+     * @param alumno que buscar
+     * @return true si existe, false si no existe
+     */
+    public boolean existe(Alumno alumno){
+        Alumno alumnoEncontrar;
+<span class="fc" id="L53">        alumnoEncontrar = alumnos.get(alumno.getPosicion());</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if(alumnoEncontrar != null){</span>
+<span class="fc" id="L55">            return true;</span>
+        }
+<span class="fc" id="L57">        else return false;</span>
+    }
+
+    /**
+     * Metodo que elimina un elemento de la lista
+     * @param posicion que elimniar
+     */
+    public void eliminar(Integer posicion){
+<span class="fc" id="L65">        alumnos.remove(posicion);</span>
+<span class="fc" id="L66">    }</span>
+
+    /**
+     * Funcion que devuelve la lista de alumnos
+     * @return alumnos
+     */
+    public String mostrarLista(){
+<span class="fc" id="L73">        String lista = &quot;&quot;;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        for(Alumno alumno : alumnos.values()){</span>
+<span class="fc" id="L75">            lista = alumno.toString();</span>
+<span class="fc" id="L76">        }</span>
+<span class="fc" id="L77">        return lista;</span>
+
+    }
+
+    /**
+     * Metodo que permite almacenar en un fichero
+     * @param nombreFichero nombre del fichero
+     * @throws FicheroException
+     */
+    public void volcarFichero(String nombreFichero) throws FicheroException{       
+<span class="fc" id="L87">        String cadena = mostrarLista();</span>
+<span class="fc" id="L88">        fichero.crear(nombreFichero, cadena);</span>
+<span class="fc" id="L89">    }</span>
+
+    
+    
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

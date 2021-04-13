@@ -12,7 +12,7 @@ import es.iespuertodelacruz.javier.exception.FicheroException;
 
 public class FicheroTest {
     
-    Fichero fichero = null;
+    Fichero fichero;
     String nombreFichero = "ficheroPrueba.txt";
     String mensajeFichero = "Esto es una pruieba de contenido en un fichero";
 
