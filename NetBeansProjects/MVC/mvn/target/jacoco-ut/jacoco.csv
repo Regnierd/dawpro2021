@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+mvn-Calculadora,es.iespuertodelacruz.javier.api,Fruta,10,52,0,0,5,21,1,11,1,11
+mvn-Calculadora,es.iespuertodelacruz.javier,App,7,0,0,0,3,0,2,0,2,0
+mvn-Calculadora,es.iespuertodelacruz.javier.vista,AppFruteria,14,0,0,0,6,0,3,0,3,0
+mvn-Calculadora,es.iespuertodelacruz.javier.modelo,Fichero,119,3,10,0,38,1,10,1,5,1
+mvn-Calculadora,es.iespuertodelacruz.javier.modelo,FrutaModelo,8,8,0,0,6,3,5,1,5,1
+mvn-Calculadora,es.iespuertodelacruz.javier.controlador,FrutaController,98,54,19,7,29,17,18,3,6,2
+mvn-Calculadora,es.iespuertodelacruz.javier.exception,FrutaException,5,4,0,0,2,2,1,1,1,1
+mvn-Calculadora,es.iespuertodelacruz.javier.exception,FicheroException,9,0,0,0,4,0,2,0,2,0

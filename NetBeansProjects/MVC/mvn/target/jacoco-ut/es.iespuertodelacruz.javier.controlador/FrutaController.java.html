@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FrutaController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mvn-Calculadora</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier.controlador</a> &gt; <span class="el_source">FrutaController.java</span></div><h1>FrutaController.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier.controlador;
+
+import es.iespuertodelacruz.javier.api.Fruta;
+import es.iespuertodelacruz.javier.exception.FrutaException;
+import es.iespuertodelacruz.javier.modelo.FrutaModelo;
+
+/**
+ * Controlador de la clase Fruta
+ */
+public class FrutaController {
+    FrutaModelo frutaModelo;
+
+<span class="fc" id="L13">    public FrutaController(){</span>
+<span class="fc" id="L14">        frutaModelo = new FrutaModelo();</span>
+<span class="fc" id="L15">    }</span>
+
+    /**
+     * Metodo encargado de realizar la validacion del objeto fruta
+     * @param fruta a validar
+     * @throws FrutaException con el mensaje descriptivo de lo que sucede
+     */
+    public void validarFruta(Fruta fruta) throws FrutaException{
+<span class="fc" id="L23">        String mensaje = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if(fruta == null){</span>
+<span class="fc" id="L26">            mensaje = &quot;Se esta intentando validar un objeto vacio&quot;;</span>
+<span class="fc" id="L27">            throw new FrutaException(mensaje);</span>
+        }
+<span class="pc bpc" id="L29" title="3 of 4 branches missed.">        if(fruta.getIdentificador() == null || fruta.getIdentificador().isEmpty()){</span>
+<span class="fc" id="L30">            mensaje = &quot;El identificador de la fruta es nulo o vacio \n&quot;;</span>
+        }
+<span class="pc bpc" id="L32" title="3 of 4 branches missed.">        if(fruta.getNombre() == null || fruta.getNombre().isEmpty()){</span>
+<span class="fc" id="L33">            mensaje += &quot;El nombre de la fruta es nulo o vacio \n&quot;;</span>
+        }
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if(fruta.getPrecio() &lt;= 0){</span>
+<span class="fc" id="L36">            mensaje += &quot;El precio de la fruta es 0 o menor \n&quot;;</span>
+        }
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if(fruta.getCoste() &lt;= 0){</span>
+<span class="fc" id="L39">            mensaje += &quot;El coste de la fruta es 0 o menor \n&quot;;</span>
+        }
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">        if(!mensaje.isEmpty()){</span>
+<span class="fc" id="L42">            throw new FrutaException(mensaje);</span>
+        }
+<span class="nc" id="L44">    }</span>
+
+    /**
+     * Metodo encargado de insertar
+     * @param fruta a insertar
+     * @throws FrutaException con mensaje controlado
+     */
+    public void insertar(Fruta fruta) throws FrutaException{
+<span class="nc" id="L52">        validarFruta(fruta);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(existe(fruta)){</span>
+<span class="nc" id="L54">            throw new FrutaException(&quot;La fruta ya existe&quot;);          </span>
+        }
+<span class="nc" id="L56">        frutaModelo.insertar(fruta);</span>
+<span class="nc" id="L57">    }</span>
+
+    /**
+     * Metodo encargado de eliminar
+     * @param fruta a eliminar
+     * @throws FrutaException con mensaje controlado
+     */
+    public void eliminar(Fruta fruta) throws FrutaException{
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if(!existe(fruta)){</span>
+<span class="nc" id="L66">            throw new FrutaException(&quot;La fruta a eliminar no existe&quot;);          </span>
+        }
+<span class="nc" id="L68">        frutaModelo.eliminar(fruta);</span>
+<span class="nc" id="L69">    }</span>
+
+    /**
+     * Metodo encargado para eliminar por identificador
+     * @param identificador de la fruta
+     * @throws FrutaException con mensaje controlado
+     */
+    public void eliminar(String identificador) throws FrutaException{
+        Fruta fruta;
+<span class="nc" id="L78">        fruta = buscar(identificador);</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        if(fruta == null){</span>
+<span class="nc" id="L80">            throw new FrutaException(&quot;La fruta a eliminar no existe&quot;);</span>
+        }
+<span class="nc" id="L82">        frutaModelo.eliminar(fruta);</span>
+<span class="nc" id="L83">    }</span>
+
+    /**
+     * Metodo encargado de buscar por identificador
+     * @param identificador para localizar la fruta
+     * @return fruta a traves del identificador
+     */
+    public Fruta buscar(String identificador){
+<span class="nc" id="L91">        Fruta fruta = null;</span>
+<span class="nc" id="L92">        fruta = frutaModelo.buscar(identificador);</span>
+<span class="nc" id="L93">        return fruta;</span>
+    }
+
+    /**
+     * Metodo encargado de modificar una fruta
+     * @param fruta a modificar
+     * @throws FrutaException controlado con el error
+     */
+    public void modificar(Fruta fruta) throws FrutaException{
+        Fruta frutaAlmacenada;
+<span class="nc" id="L103">        validarFruta(fruta);</span>
+<span class="nc" id="L104">        frutaAlmacenada = buscar(fruta.getIdentificador());</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">        if(frutaAlmacenada == null){</span>
+<span class="nc" id="L106">            throw new FrutaException(&quot;La fruta no existe&quot;);          </span>
+        }
+<span class="nc" id="L108">        frutaModelo.modificar(fruta);</span>
+<span class="nc" id="L109">    }</span>
+
+    /**
+     * Funcion encargada de verificar si existe la fruta
+     * @param fruta a encontrar
+     * @return boolean
+     */
+    private boolean existe(Fruta fruta){
+<span class="nc" id="L117">        boolean encontrada = false;</span>
+        Fruta frutaEcontrada;
+
+<span class="nc" id="L120">        frutaEcontrada = buscar(fruta.getIdentificador());</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        if(frutaEcontrada != null){</span>
+<span class="nc" id="L122">            encontrada = true;</span>
+        }
+        
+<span class="nc" id="L125">        return encontrada;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

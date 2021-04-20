@@ -52,8 +52,14 @@ public class GestionFloristeriaTest {
 
     @Test
     public void numeroArticuloTest(){
-        int articulos = gestionFloristeria.numeroArticulo(planta);
-        assertTrue(articulos == planta.getArticulos(), "Deberia de ser 10 articulos");
+        int articulos;
+        try {
+            articulos = gestionFloristeria.numeroArticulo(planta);
+            assertTrue(articulos == planta.getArticulos(), "Deberia de ser 10 articulos");
+        } catch (PlantasException e) {
+            fail("No deberia de llegar aqui");
+        }
+        
     }
 
     @Test
@@ -93,6 +99,16 @@ public class GestionFloristeriaTest {
     public void exceptionBuscarTest(){
         try {
             gestionFloristeria.buscar("A002");
+        } catch (PlantasException e) {
+            assertTrue(e.getMessage().contains("La planta no existe"));
+        }
+    }
+
+    @Test
+    public void exceptionNumeroArticulo(){
+        try {
+            Planta plantaNoExiste = new Planta("A005", "Violeta", 15, 7, 10);
+            gestionFloristeria.numeroArticulo(plantaNoExiste);
         } catch (PlantasException e) {
             assertTrue(e.getMessage().contains("La planta no existe"));
         }

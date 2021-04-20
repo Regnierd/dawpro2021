@@ -1,0 +1,8 @@
+es\iespuertodelacruz\javier\controlador\FrutaController.class
+es\iespuertodelacruz\javier\exception\FicheroException.class
+es\iespuertodelacruz\javier\modelo\FrutaModelo.class
+es\iespuertodelacruz\javier\exception\FrutaException.class
+es\iespuertodelacruz\javier\modelo\Fichero.class
+es\iespuertodelacruz\javier\App.class
+es\iespuertodelacruz\javier\api\Fruta.class
+es\iespuertodelacruz\javier\vista\AppFruteria.class

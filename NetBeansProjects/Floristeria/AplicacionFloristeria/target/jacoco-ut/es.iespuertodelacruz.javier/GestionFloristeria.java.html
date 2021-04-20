@@ -68,9 +68,15 @@ public class GestionFloristeria {
      * Funcion para contar el numero de una planta 
      * @param planta
      * @return int
+     * @throws PlantasException
      */
-    public int numeroArticulo(Planta planta){      
-<span class="fc" id="L73">        return planta.getArticulos();    </span>
+    public int numeroArticulo(Planta planta) throws PlantasException{    
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if(!existe(planta)){</span>
+<span class="fc" id="L75">            throw new PlantasException(&quot;La planta no existe&quot;);</span>
+        }else{
+<span class="fc" id="L77">            return planta.getArticulos();    </span>
+        }
+        
         
     }
 
@@ -79,8 +85,8 @@ public class GestionFloristeria {
      * @param id de la planta
      */
     public void eliminar(String id){
-<span class="fc" id="L82">        plantas.remove(id);</span>
-<span class="fc" id="L83">    }</span>
+<span class="fc" id="L88">        plantas.remove(id);</span>
+<span class="fc" id="L89">    }</span>
 
     /**
      * Funcion para verificar si existe una planta
@@ -88,17 +94,17 @@ public class GestionFloristeria {
      * @return true si existe, false si no existe
      */
     public boolean existe(Planta planta){
-<span class="fc" id="L91">        return plantas.containsKey(planta.getId());</span>
+<span class="fc" id="L97">        return plantas.containsKey(planta.getId());</span>
     }
 
     public String mostrar(String id){
-<span class="fc" id="L95">        String datosPlanta = &quot;&quot;;</span>
-<span class="fc bfc" id="L96" title="All 2 branches covered.">        for(Planta planta : plantas.values()){</span>
-<span class="pc bpc" id="L97" title="1 of 2 branches missed.">            if(planta.getId().equals(id)){</span>
-<span class="fc" id="L98">                datosPlanta = planta.toString();</span>
+<span class="fc" id="L101">        String datosPlanta = &quot;&quot;;</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        for(Planta planta : plantas.values()){</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            if(planta.getId().equals(id)){</span>
+<span class="fc" id="L104">                datosPlanta = planta.toString();</span>
             }          
-<span class="fc" id="L100">        }</span>
-<span class="fc" id="L101">        return datosPlanta;</span>
+<span class="fc" id="L106">        }</span>
+<span class="fc" id="L107">        return datosPlanta;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

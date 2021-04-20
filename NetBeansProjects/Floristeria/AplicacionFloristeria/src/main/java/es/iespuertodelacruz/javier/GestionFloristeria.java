@@ -68,9 +68,15 @@ public class GestionFloristeria {
      * Funcion para contar el numero de una planta 
      * @param planta
      * @return int
+     * @throws PlantasException
      */
-    public int numeroArticulo(Planta planta){      
-        return planta.getArticulos();    
+    public int numeroArticulo(Planta planta) throws PlantasException{    
+        if(!existe(planta)){
+            throw new PlantasException("La planta no existe");
+        }else{
+            return planta.getArticulos();    
+        }
+        
         
     }
 

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EjercicioArrays.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">notasClase</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier</a> &gt; <span class="el_source">EjercicioArrays.java</span></div><h1>EjercicioArrays.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier;
+import java.util.ArrayList;
+
+
+<span class="fc" id="L5">public class EjercicioArrays {</span>
+    static ArrayList&lt;Float&gt; aprobados;
+    static ArrayList&lt;Float&gt; suspensos;
+    static ArrayList&lt;Float&gt; calificaciones;
+    static ArrayList&lt;Float&gt; listaClase;
+    static ArrayList&lt;Float&gt; notas;
+    static ArrayList&lt;Float&gt; practicas;
+    static ArrayList&lt;Float&gt; estadistica;
+    
+<span class="fc" id="L14">    static int numeroAlumnos = 40;</span>
+    
+    public static void main(String[] args) {    
+
+        //Comprobamos el resultado del ejercicio   
+<span class="fc" id="L19">        System.out.println(&quot;Lista de clase :&quot; + crearListaAlumnos());</span>
+<span class="fc" id="L20">        System.out.println(&quot;Array de Notas :&quot; + notas);</span>
+        
+<span class="fc" id="L22">    }</span>
+
+    
+
+    /**
+     * Funcion que busca la nota mayor de la lista
+     * @param maxNota a buscar
+     * @return int
+     * */
+    public static float buscarNotaMayor(ArrayList&lt;Float&gt; control){
+<span class="fc" id="L32">        float postEval = 0;</span>
+<span class="fc" id="L33">        float maxNota = 0;</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        for(int i=0; i&lt;control.size(); i++){</span>
+<span class="fc" id="L35">            float preEval = control.get(i);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">            if (preEval &gt;= postEval){</span>
+<span class="fc" id="L37">                maxNota = preEval;       </span>
+<span class="fc" id="L38">                postEval = maxNota;</span>
+            }
+        }
+<span class="fc" id="L41">        return postEval;</span>
+    }
+
+    /**
+     * Funcion que busca la nota menor de la lista
+     * @param minNota a buscar
+     * @return int
+     */
+    public static float buscarNotaMenor(ArrayList&lt;Float&gt; control){
+<span class="fc" id="L50">        float postEval = 11;</span>
+<span class="fc" id="L51">        float minNota = 0;  </span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        for(int i=0; i&lt;control.size(); i++){</span>
+<span class="fc" id="L53">            float preEval = control.get(i);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            if (preEval &lt; postEval){</span>
+<span class="fc" id="L55">                minNota = preEval;</span>
+<span class="fc" id="L56">                postEval = minNota;</span>
+            }
+        }
+<span class="fc" id="L59">        return postEval;</span>
+    }
+
+    /**
+     * Metodo para crear la lista de alumnos desde el 1 al 40
+     * @param numeroAlumnos de la lista
+     */
+    public static ArrayList&lt;Float&gt; crearListaAlumnos(){
+<span class="fc" id="L67">        listaClase = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L68">        int contador = 0;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        for (int i = 0; i &lt; numeroAlumnos; i++){</span>
+<span class="fc" id="L70">            contador = i+1;</span>
+<span class="fc" id="L71">            listaClase.add((float) contador);</span>
+        }
+<span class="fc" id="L73">        return listaClase;</span>
+    }
+
+    /**
+     * Funcion para facilitar el indice minimo de las notas
+     * @return int
+     */
+    public static int indiceMinimo(ArrayList&lt;Float&gt; control){       
+<span class="fc" id="L81">        notas = control;</span>
+<span class="fc" id="L82">        int indMinNota = notas.indexOf(buscarNotaMenor(control));</span>
+<span class="fc" id="L83">        return indMinNota;</span>
+    }
+
+    /**
+     * Funcion para facilitar el indice maximo de las notas
+     * @return int
+     */
+    public static int indiceMaximo(ArrayList&lt;Float&gt; control){
+<span class="fc" id="L91">        notas = control;</span>
+<span class="fc" id="L92">        int indMaxNota = notas.indexOf(buscarNotaMayor(control));</span>
+<span class="fc" id="L93">        return indMaxNota;</span>
+    }
+
+    /**
+     * Metodo encargado para crear el vector de calificaciones
+     */
+    public static ArrayList&lt;Float&gt; vectores(ArrayList&lt;Float&gt; control, ArrayList&lt;Float&gt; practicas){
+<span class="fc" id="L100">        calificaciones = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        for(int i = 0; i&lt;control.size(); i++){</span>
+<span class="fc" id="L102">            float vector = (((float) control.get(i) + (float) practicas.get(i)) / 2);</span>
+<span class="fc" id="L103">            calificaciones.add(vector);</span>
+        }
+<span class="fc" id="L105">        return calificaciones;</span>
+        //System.out.println(&quot;Prácticas      :&quot; + practicas.toString());
+        //System.out.println(&quot;Calificaciones :&quot; + calificaciones.toString());
+    }
+
+    /**
+     * Metodo encargado de agregar a la lista las estadisticas de las calificaciones
+     * @param control
+     */
+    public static String estadisticas(ArrayList&lt;Float&gt; calificaciones, ArrayList&lt;Float&gt; control){ 
+<span class="fc" id="L115">        estadistica = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L116">        double solucion = 0;</span>
+<span class="fc" id="L117">        String tramo = &quot;&quot;;</span>
+        int i;
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        for (i=0; i&lt;10; i++){</span>
+<span class="fc" id="L120">            float contador = 0;</span>
+<span class="fc" id="L121">            float suma = 0;</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">            for (int j=0; j&lt;control.size(); j++){</span>
+<span class="fc bfc" id="L123" title="All 4 branches covered.">                if ((i &lt; calificaciones.get(j)) &amp;&amp; ((i+1) &gt;= calificaciones.get(j) )) {</span>
+<span class="fc" id="L124">                    suma += calificaciones.get(j);</span>
+<span class="fc" id="L125">                    contador += 1;</span>
+                }
+            }
+<span class="fc bfc" id="L128" title="All 2 branches covered.">            if (contador != 0){</span>
+<span class="fc" id="L129">                float resultado = ( (float)contador / control.size());</span>
+<span class="fc" id="L130">                estadistica.add(resultado);</span>
+<span class="fc" id="L131">            }else{ </span>
+<span class="fc" id="L132">                estadistica.add(0f);</span>
+            }
+<span class="fc" id="L134">            solucion = (Math.round(estadistica.get(i) * 10000.0)) / 100.0;</span>
+<span class="fc" id="L135">            tramo += &quot;Estadística nota tramo &lt;=&quot; + (i+1) + &quot; = &quot; + solucion + &quot;%&quot; + &quot;\n&quot;;</span>
+        }
+<span class="fc" id="L137">        return tramo;</span>
+    }
+
+    /**
+     * Metodo encargado de separar los aprobados en una listas sin 0
+     * @param listaAprobados
+     */
+    public static ArrayList&lt;Float&gt; resumenAprobados(ArrayList&lt;Float&gt; listaAprobados){
+<span class="fc" id="L145">        int i = 0;      </span>
+<span class="fc" id="L146">        ArrayList&lt;Float&gt; resumenAprobados = new ArrayList&lt;&gt;();</span>
+    
+<span class="fc bfc" id="L148" title="All 2 branches covered.">        while(i &lt; listaAprobados.size()){</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">            if(listaAprobados.get(i) != 0){</span>
+<span class="fc" id="L150">                resumenAprobados.add(listaAprobados.get(i));               </span>
+<span class="fc" id="L151">                i++;           </span>
+            }else{
+<span class="fc" id="L153">                i++; </span>
+            }
+        }   
+    
+<span class="fc" id="L157">        return resumenAprobados;</span>
+    }
+
+    /**
+     * Metodo encargado de separar los suspendidos en una listas sin 0
+     * @param listaAprobados
+     */
+    public static ArrayList&lt;Float&gt; resumenSuspendidos(ArrayList&lt;Float&gt; listaSuspendidos){
+<span class="fc" id="L165">        int i = 0;</span>
+<span class="fc" id="L166">        ArrayList&lt;Float&gt; resumenSuspensos = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">        while(i &lt; listaSuspendidos.size()){</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">            if(listaSuspendidos.get(i) != 0){</span>
+<span class="fc" id="L169">                resumenSuspensos.add(listaSuspendidos.get(i));              </span>
+<span class="fc" id="L170">                i++;              </span>
+            }else{ 
+<span class="fc" id="L172">                i++;</span>
+            }
+        }
+        
+<span class="fc" id="L176">        return resumenSuspensos;</span>
+    }
+
+    /**
+     * Metodo que crea una lista con 40 alumnos, se agregan solo 31 notas
+     * y hay que insertar un nueva nota en la posicion 4 de la lista
+     */
+    public static void insertarNuevaCalificacionPosicionCuatro(ArrayList&lt;Float&gt; calificaciones){      
+<span class="fc bfc" id="L184" title="All 2 branches covered.">        for (int j=0; j&lt;31; j++){</span>
+<span class="fc" id="L185">            float numeroAleatorio = (int)(Math.random()*11);</span>
+<span class="fc" id="L186">            calificaciones.add(numeroAleatorio);</span>
+            
+        }
+<span class="fc" id="L189">        System.out.println(&quot;Nota antigua alumno nº4: &quot; + calificaciones.get(3)); </span>
+<span class="fc" id="L190">        calificaciones.set(3, (float) 6);</span>
+<span class="fc" id="L191">        System.out.println(&quot;Nota nueva alumno nº4: &quot; + calificaciones.get(3));</span>
+<span class="fc" id="L192">    }</span>
+
+    /**
+     * Metodo para listar las notas de los aprobados
+     * por numero de lista
+     */
+    public static void listarAprobados(ArrayList&lt;Float&gt; notas){
+        //Aprobados y suspensos
+<span class="fc" id="L200">        calificaciones = notas;</span>
+<span class="fc" id="L201">        aprobados = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L203" title="All 2 branches covered.">        for (int i=0; i&lt;notas.size(); i++){</span>
+<span class="fc bfc" id="L204" title="All 2 branches covered.">            if (calificaciones.get(i) &gt;= 5){</span>
+<span class="fc" id="L205">                aprobados.add((float) calificaciones.indexOf(i));            </span>
+            }else{ 
+<span class="fc" id="L207">                aprobados.add(0f);              </span>
+            }
+        }    
+
+<span class="fc" id="L211">        System.out.println(&quot;Relación de aprobados por nº de lista: &quot; </span>
+<span class="fc" id="L212">                + aprobados.toString());</span>
+        
+<span class="fc" id="L214">    }</span>
+
+    /**
+     * Metodo para listar las notas de los suspendidos
+     * por numero de lista
+     */
+    public static void listarSuspendidos(ArrayList&lt;Float&gt; notas){
+        //Aprobados y suspensos
+<span class="fc" id="L222">        calificaciones = notas;</span>
+<span class="fc" id="L223">        suspensos = new ArrayList&lt;&gt;();</span>
+        
+<span class="fc bfc" id="L225" title="All 2 branches covered.">        for (int i=0; i&lt;notas.size(); i++){</span>
+<span class="fc bfc" id="L226" title="All 2 branches covered.">            if (calificaciones.get(i) &lt; 5){</span>
+<span class="fc" id="L227">                suspensos.add((float)calificaciones.indexOf(i));            </span>
+            }else{ 
+<span class="fc" id="L229">                suspensos.add(0f);              </span>
+            }
+        }           
+<span class="fc" id="L232">        System.out.println(&quot;Relación de suspensos por nº de lista: &quot; </span>
+<span class="fc" id="L233">                + suspensos.toString());</span>
+<span class="fc" id="L234">    }</span>
+
+    
+
+    /**
+     * Metodo encargado para crear la lista de notas practicas
+     */
+    public static ArrayList&lt;Float&gt; crearNotasPracticas(){
+        //creamos el array de notas &quot;practicas&quot;
+<span class="fc" id="L243">        practicas = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L244" title="All 2 branches covered.">        for(int i=0; i &lt; numeroAlumnos; i++){</span>
+<span class="fc" id="L245">            float numeroAleatorio = (int)(Math.random()*11);</span>
+<span class="fc" id="L246">            practicas.add(numeroAleatorio);</span>
+        }
+<span class="fc" id="L248">        return practicas; </span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
