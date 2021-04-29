@@ -1,5 +1,7 @@
 package es.iespuertodelacruz.javier.api;
 
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * Clase fruta de la aplicacion
@@ -9,6 +11,7 @@ public class Fruta {
     String identificador;
     float precio;
     float coste;
+    private static final String DELIMITADOR = ",";
 
     public Fruta(){
 
@@ -26,6 +29,22 @@ public class Fruta {
         this.precio = precio;
         this.coste = coste;
     }
+
+    /**
+    * Constructo que recibe una cadena de text
+    * @param cadena con la informacion
+    */
+   public Fruta(String cadena) {
+    ArrayList<Object> elementos = new ArrayList<>();
+    StringTokenizer tokenizer = new StringTokenizer(cadena, DELIMITADOR);
+    while (tokenizer.hasMoreElements()) {
+       elementos.add(tokenizer.nextToken());
+    }
+    this.identificador = (String) elementos.get(0);
+    this.nombre = (String) elementos.get(1);
+    this.precio = Float.parseFloat((String)elementos.get(2));
+    this.coste = Float.parseFloat((String)elementos.get(3));
+ }
 
     public String getNombre() {
         return this.nombre;
@@ -66,6 +85,12 @@ public class Fruta {
     public float beneficio(){
         return precio - coste;
     }
+
+
+    @Override
+   public String toString() {
+      return getIdentificador() + DELIMITADOR + getNombre() + DELIMITADOR + getPrecio() + DELIMITADOR + getCoste();
+   }
 
 
 }

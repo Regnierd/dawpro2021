@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OperacionController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">calculadora</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier.controlador</a> &gt; <span class="el_source">OperacionController.java</span></div><h1>OperacionController.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier.controlador;
+
+import es.iespuertodelacruz.javier.api.Operacion;
+import es.iespuertodelacruz.javier.exception.OperacionException;
+import es.iespuertodelacruz.javier.modelo.OperacionModelo;
+
+public class OperacionController {
+    
+    private static final char SUMA = '+';
+    private static final char RESTA = '-';
+    private static final char MULTIPLICACION = '*';
+    private static final char DIVISION = '/';
+    OperacionModelo operacionModelo;
+
+<span class="nc" id="L15">    public OperacionController(){</span>
+<span class="nc" id="L16">        operacionModelo = new OperacionModelo();</span>
+<span class="nc" id="L17">    }</span>
+
+    /**
+     * Merodo encargado de validar el objeto de operacion
+     * @param operacion a validar
+     * @throws OperacionException error controlado
+     */
+    public void validar(Operacion operacion) throws OperacionException{
+<span class="nc" id="L25">        String mensaje = &quot;&quot;;</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if(operacion == null){</span>
+<span class="nc" id="L27">            mensaje = &quot;No se puede realizar la operacion con un objeto null&quot;;</span>
+<span class="nc" id="L28">            throw new OperacionException(mensaje);</span>
+        }
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if(operacion.getNumero1() &lt; 0 ){</span>
+<span class="nc" id="L31">            mensaje = &quot;El numero 1 deber de ser mayor o igual a 0&quot;;</span>
+        }
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if(operacion.getNumero2() &lt; 0 ){</span>
+<span class="nc" id="L34">            mensaje = &quot;El numero 1 deber de ser mayor o igual a 0&quot;;</span>
+        }
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(String.valueOf(operacion.getOperando()).isEmpty()){</span>
+<span class="nc" id="L37">            mensaje = &quot;El operador debe de estar relleno&quot;;</span>
+        }
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if(!mensaje.isEmpty()){</span>
+<span class="nc" id="L40">            throw new OperacionException(mensaje);</span>
+        }
+<span class="nc" id="L42">    }</span>
+
+    /**
+     * Funcion encargada de sumar dos numeros
+     * @param operacion objeto a sumar 
+     * @return double 
+     * @throws OperacionException error controlado
+     */
+    public void operaciones(Operacion operacion, char operando) throws OperacionException{
+<span class="nc" id="L51">        validar(operacion);</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        if(operacion.getOperando() != operando){</span>
+<span class="nc" id="L53">            throw new OperacionException(&quot;Se esta intentando realizar una operacion incorrecto que no es &quot; + operando);</span>
+        }
+        
+<span class="nc" id="L56">    }</span>
+
+    /**
+     * Funcion encargada de sumar dos numeros
+     * @param operacion objeto a sumar 
+     * @return double 
+     * @throws OperacionException error controlado
+     */
+    public double sumar(Operacion operacion) throws OperacionException{
+<span class="nc" id="L65">        operaciones(operacion, SUMA);</span>
+<span class="nc" id="L66">        operacion.setResultado(operacion.getNumero1() + operacion.getNumero2());    </span>
+<span class="nc" id="L67">        return operacion.getResultado();</span>
+    }
+
+    /**
+     * Funcion encargada de restar dos numeros
+     * @param operacion objeto a restar 
+     * @return double 
+     * @throws OperacionException error controlado
+     */
+    public double restar(Operacion operacion) throws OperacionException{
+<span class="nc" id="L77">        operaciones(operacion, RESTA);</span>
+<span class="nc" id="L78">        operacion.setResultado(operacion.getNumero1() - operacion.getNumero2());     </span>
+<span class="nc" id="L79">        return operacion.getResultado();</span>
+    }
+
+    /**
+     * Funcion encargada de multiplicar dos numeros
+     * @param operacion objeto a multiplicar 
+     * @return double 
+     * @throws OperacionException error controlado
+     */
+    public double multiplicar(Operacion operacion) throws OperacionException{
+<span class="nc" id="L89">        operaciones(operacion, MULTIPLICACION);</span>
+<span class="nc" id="L90">        operacion.setResultado(operacion.getNumero1() * operacion.getNumero2());     </span>
+<span class="nc" id="L91">        return operacion.getResultado();</span>
+    }
+
+    /**
+     * Funcion encargada de dividr dos numeros
+     * @param operacion objeto a dividr 
+     * @return double 
+     * @throws OperacionException error controlado
+     */
+    public double dividir(Operacion operacion) throws OperacionException{
+<span class="nc" id="L101">        operaciones(operacion, DIVISION);</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        if(operacion.getNumero2() == 0){</span>
+<span class="nc" id="L103">            throw new OperacionException(&quot;No se puede dividir por 0&quot;);</span>
+        }
+<span class="nc" id="L105">        operacion.setResultado(operacion.getNumero1() / operacion.getNumero2());     </span>
+<span class="nc" id="L106">        return operacion.getResultado();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

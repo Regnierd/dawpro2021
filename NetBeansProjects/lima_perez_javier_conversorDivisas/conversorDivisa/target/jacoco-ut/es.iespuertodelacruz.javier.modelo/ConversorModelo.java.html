@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConversorModelo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">conversorDivisa</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier.modelo</a> &gt; <span class="el_source">ConversorModelo.java</span></div><h1>ConversorModelo.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier.modelo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import es.iespuertodelacruz.javier.exceptions.ConversorException;
+
+
+public class ConversorModelo {
+<span class="fc" id="L10">    HashMap&lt;String, Double&gt; tablaConversion = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L12">    public ConversorModelo(){</span>
+<span class="fc" id="L13">        insertar(&quot;EUR&quot;, 1.0);</span>
+<span class="fc" id="L14">        insertar(&quot;USD&quot;, 1.180);</span>
+<span class="fc" id="L15">        insertar(&quot;JPY&quot;, 134.86);</span>
+<span class="fc" id="L16">        insertar(&quot;BGN&quot;, 1.958);</span>
+<span class="fc" id="L17">    }</span>
+    /**
+     * Metodo encargado de insertar en la lista una divisa
+     * @param codigo de la divisa
+     * @param tipoCambio de la divisa
+     */
+    public void insertar(String codigo, Double tipoCambio){
+<span class="fc" id="L24">        tablaConversion.put(codigo, tipoCambio);</span>
+<span class="fc" id="L25">    }</span>
+
+    /**
+     * Metodo encargado de eliminar de la lista una divisa
+     * @param codigo a eliminar
+     */
+    public void eliminar(String codigo){
+<span class="fc" id="L32">        tablaConversion.remove(codigo);</span>
+<span class="fc" id="L33">    }</span>
+
+    /**
+     * Funcion encargado de comproboar si existe una divisa
+     * @param codigo de la divisa
+     * @return true si existe, false si no existe
+     */
+    public boolean existe(String codigo){
+        boolean encontrada; 
+<span class="fc" id="L42">        encontrada = tablaConversion.containsKey(codigo);      </span>
+<span class="fc" id="L43">        return encontrada;</span>
+    }
+
+    /**
+     * Funcion encargado de mostrar toda la lista
+     * @return String
+     */
+    public String obtenerLista(){
+<span class="fc" id="L51">        return tablaConversion.toString();</span>
+    }
+    /**
+     * Funcion encargada de devolver la divisa por su codigo
+     * @param codigoDivisa a obtener
+     * @return double
+     */
+    public double obtenerDivisa(String codigoDivisa){
+<span class="fc" id="L59">        return tablaConversion.get(codigoDivisa);</span>
+    }
+
+    /**
+     * Funcion encargada de cambiar la divisa a euros
+     * @param codigoDivisaOrigen de la divisa origen
+     * @param codigoDivisaDestino de la divisa a cambiar
+     * @param importe que tengo actualmente
+     * @return double
+     */
+    public double convertir(String codigoDivisaOrigen, String codigoDivisaDestino, double importe){
+<span class="fc" id="L70">        double moneda = importe / obtenerDivisa(codigoDivisaOrigen); //Primero convierto a euros</span>
+<span class="fc" id="L71">        return moneda * obtenerDivisa(codigoDivisaDestino);</span>
+    }
+
+    /**
+     * Funcion encargada de obtener todos los codigos de la divisa
+     * @return ArrayList&lt;String&gt;
+     */
+    public ArrayList&lt;String&gt; obtenerCodigosDivisa(){
+<span class="fc" id="L79">        ArrayList&lt;String&gt; codigos = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        for (String elemento : tablaConversion.keySet()) {</span>
+<span class="fc" id="L81">            codigos.add(elemento);    </span>
+<span class="fc" id="L82">        }      </span>
+<span class="fc" id="L83">        return codigos;</span>
+    }
+
+    /**
+     * Metodo encargado de validar los paramentros pasados
+     * @param codigoDivisaOrigen a validar
+     * @param codigoDivisaDestino a validar
+     * @param importe a validar
+     * @throws ConversorException con el mensaje descriptivo de lo que sucede
+     */
+    public void validar(String codigoDivisaOrigen, String codigoDivisaDestino, double importe) throws ConversorException{
+<span class="fc" id="L94">        String mensaje = &quot;&quot;;</span>
+
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">        if(codigoDivisaOrigen.isEmpty()){</span>
+<span class="fc" id="L97">            mensaje += &quot;El codigo de divisa de origen esta vacio&quot;;</span>
+        }
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        if(codigoDivisaDestino.isEmpty()){</span>
+<span class="fc" id="L100">            mensaje += &quot;El codigo de divisa de destino esta vacio&quot;;</span>
+        }
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        if(importe &lt;= 0){</span>
+<span class="fc" id="L103">            mensaje += &quot;El importe es menor o igual a 0&quot;;</span>
+        }
+
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">        if(!mensaje.isEmpty()){</span>
+<span class="fc" id="L107">            throw new ConversorException(mensaje);</span>
+        }
+<span class="nc" id="L109">    } </span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

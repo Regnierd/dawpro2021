@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+conversorDivisa,es.iespuertodelacruz.javier.vista,AppConversor,66,42,5,2,26,11,5,5,2,4
+conversorDivisa,es.iespuertodelacruz.javier.modelo,ConversorModelo,1,123,4,6,1,31,4,10,0,9
+conversorDivisa,es.iespuertodelacruz.javier.exceptions,ConversorException,0,9,0,0,0,4,0,2,0,2
+conversorDivisa,es.iespuertodelacruz.javier.controlador,ConversorController,0,19,0,0,0,5,0,3,0,3

@@ -1,6 +1,7 @@
 package es.iespuertodelacruz.javier.controlador;
 
 import es.iespuertodelacruz.javier.api.Fruta;
+import es.iespuertodelacruz.javier.exception.FicheroException;
 import es.iespuertodelacruz.javier.exception.FrutaException;
 import es.iespuertodelacruz.javier.modelo.FrutaModelo;
 
@@ -9,7 +10,7 @@ import es.iespuertodelacruz.javier.modelo.FrutaModelo;
  */
 public class FrutaController {
     FrutaModelo frutaModelo;
-
+    private static final String LA_FRUTA_INDICADA_NO_EXISTE = "La fruta indicada NO existe";
     public FrutaController(){
         frutaModelo = new FrutaModelo();
     }
@@ -18,7 +19,7 @@ public class FrutaController {
      * Metodo encargado de realizar la validacion del objeto fruta
      * @param fruta a validar
      * @throws FrutaException con el mensaje descriptivo de lo que sucede
-     */
+     */ 
     public void validarFruta(Fruta fruta) throws FrutaException{
         String mensaje = "";
 
@@ -47,8 +48,9 @@ public class FrutaController {
      * Metodo encargado de insertar
      * @param fruta a insertar
      * @throws FrutaException con mensaje controlado
+     * @throws FicheroException
      */
-    public void insertar(Fruta fruta) throws FrutaException{
+    public void insertar(Fruta fruta) throws FrutaException, FicheroException{
         validarFruta(fruta);
         if(existe(fruta)){
             throw new FrutaException("La fruta ya existe");          
@@ -60,8 +62,9 @@ public class FrutaController {
      * Metodo encargado de eliminar
      * @param fruta a eliminar
      * @throws FrutaException con mensaje controlado
+     * @throws FicheroException
      */
-    public void eliminar(Fruta fruta) throws FrutaException{
+    public void eliminar(Fruta fruta) throws FrutaException, FicheroException{
         if(!existe(fruta)){
             throw new FrutaException("La fruta a eliminar no existe");          
         }
@@ -72,48 +75,50 @@ public class FrutaController {
      * Metodo encargado para eliminar por identificador
      * @param identificador de la fruta
      * @throws FrutaException con mensaje controlado
+     * @throws FicheroException
      */
-    public void eliminar(String identificador) throws FrutaException{
+    public void eliminar(String identificador) throws FrutaException, FicheroException{
         Fruta fruta;
         fruta = buscar(identificador);
-        if(fruta == null){
-            throw new FrutaException("La fruta a eliminar no existe");
-        }
-        frutaModelo.eliminar(fruta);
+        eliminar(fruta);
     }
 
     /**
      * Metodo encargado de buscar por identificador
      * @param identificador para localizar la fruta
      * @return fruta a traves del identificador
+     * @throws FicheroException
      */
-    public Fruta buscar(String identificador){
+    public Fruta buscar(String identificador) throws FicheroException{
         Fruta fruta = null;
         fruta = frutaModelo.buscar(identificador);
         return fruta;
     }
 
     /**
-     * Metodo encargado de modificar una fruta
-     * @param fruta a modificar
-     * @throws FrutaException controlado con el error
-     */
-    public void modificar(Fruta fruta) throws FrutaException{
-        Fruta frutaAlmacenada;
-        validarFruta(fruta);
-        frutaAlmacenada = buscar(fruta.getIdentificador());
-        if(frutaAlmacenada == null){
-            throw new FrutaException("La fruta no existe");          
-        }
-        frutaModelo.modificar(fruta);
+    * Metodo encargado de realizar la modificacion de una fruta
+    * @param fruta a modficar
+    * @throws FrutaException controlada en caso de error
+    * @throws FicheroException
+    */
+   public void modificar(Fruta fruta) throws FrutaException, FicheroException {
+    Fruta frutaAlmacenada;
+    
+    validarFruta(fruta);
+    frutaAlmacenada = buscar(fruta.getIdentificador());
+    if (frutaAlmacenada == null) {
+       throw new FrutaException(LA_FRUTA_INDICADA_NO_EXISTE);
     }
+    frutaModelo.modificar(frutaAlmacenada, fruta);
+ }
 
     /**
      * Funcion encargada de verificar si existe la fruta
      * @param fruta a encontrar
      * @return boolean
+     * @throws FicheroException
      */
-    private boolean existe(Fruta fruta){
+    private boolean existe(Fruta fruta) throws FicheroException{
         boolean encontrada = false;
         Fruta frutaEcontrada;
 

@@ -1,0 +1,5 @@
+es\iespuertodelacruz\javier\modelo\OperacionModelo.class
+es\iespuertodelacruz\javier\vista\App.class
+es\iespuertodelacruz\javier\api\Operacion.class
+es\iespuertodelacruz\javier\controlador\OperacionController.class
+es\iespuertodelacruz\javier\exception\OperacionException.class
