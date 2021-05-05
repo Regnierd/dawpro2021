@@ -8,6 +8,9 @@ public class Operacion {
     private double resultado;
     private char operando;
 
+    public Operacion() {
+    }
+
     /**
         * Constructori por defecto para todas las operaciones
         * @param numero1 de la operacion
