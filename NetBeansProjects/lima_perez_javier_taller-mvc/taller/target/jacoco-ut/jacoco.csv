@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+taller,es.iespuertodelacruz.javier.api,Vehiculo,4,91,3,7,2,25,3,11,0,9
+taller,es.iespuertodelacruz.javier.vista,AppVista,46,126,1,11,21,48,1,12,0,4
+taller,es.iespuertodelacruz.javier.modelo,ModeloVehiculo,0,90,1,11,0,26,1,12,0,7
+taller,es.iespuertodelacruz.javier.modelo,Fichero,70,244,6,18,21,74,6,16,0,10
+taller,es.iespuertodelacruz.javier.exceptions,FicheroException,9,0,0,0,4,0,2,0,2,0
+taller,es.iespuertodelacruz.javier.exceptions,VehiculoException,5,4,0,0,2,2,1,1,1,1
+taller,es.iespuertodelacruz.javier.controlador,ControladorVehiculo,0,126,3,17,0,38,3,16,0,9

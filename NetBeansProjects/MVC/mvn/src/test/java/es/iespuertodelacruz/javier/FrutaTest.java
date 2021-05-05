@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import es.iespuertodelacruz.javier.api.Fruta;
 
-/**
- * Unit test for simple App.
- */
 public class FrutaTest extends UtilidadesTest {
 
     Fruta fruta;

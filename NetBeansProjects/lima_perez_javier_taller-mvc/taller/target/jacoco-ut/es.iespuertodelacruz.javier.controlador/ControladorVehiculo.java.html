@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControladorVehiculo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">taller</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier.controlador</a> &gt; <span class="el_source">ControladorVehiculo.java</span></div><h1>ControladorVehiculo.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier.controlador;
+
+
+import java.util.ArrayList;
+
+import es.iespuertodelacruz.javier.api.Vehiculo;
+import es.iespuertodelacruz.javier.exceptions.FicheroException;
+import es.iespuertodelacruz.javier.exceptions.VehiculoException;
+import es.iespuertodelacruz.javier.modelo.ModeloVehiculo;
+
+public class ControladorVehiculo {   
+    ModeloVehiculo modeloVehiculo;
+    private static final String EL_VEHICULO_INDICADO_NO_EXISTE = &quot;El vehiculo indicada NO existe&quot;;
+<span class="fc" id="L14">    public ControladorVehiculo() {</span>
+<span class="fc" id="L15">        modeloVehiculo = new ModeloVehiculo();</span>
+<span class="fc" id="L16">    }</span>
+
+    /**
+     * Metodo encargado de validar un vehiculo
+     * @param vehiculo a validar
+     * @throws VehiculoException con un mensaje controlado
+     */
+    public void validar(Vehiculo vehiculo) throws VehiculoException{
+<span class="fc" id="L24">        String mensaje = &quot;&quot;;</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if(vehiculo == null){</span>
+<span class="fc" id="L26">            mensaje = &quot;Se esta intentando validar un objeto vacio&quot;;</span>
+<span class="fc" id="L27">            throw new VehiculoException(mensaje);</span>
+        }
+<span class="pc bpc" id="L29" title="1 of 4 branches missed.">        if(vehiculo.getMatricula() == null || vehiculo.getMatricula().isEmpty()){</span>
+<span class="fc" id="L30">            mensaje += &quot;La matricula del vehiculo es nula o vacia&quot;;</span>
+        }
+<span class="pc bpc" id="L32" title="1 of 4 branches missed.">        if(vehiculo.getMarca() == null || vehiculo.getMarca().isEmpty()){</span>
+<span class="fc" id="L33">            mensaje += &quot;La marca del vehiculo es nula o vacia&quot;;</span>
+        }
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(!mensaje.isEmpty()){</span>
+<span class="fc" id="L36">            throw new VehiculoException(mensaje);</span>
+        }
+<span class="fc" id="L38">    }</span>
+    /**
+     * Metodo encargado de insertar un vehiculo del fichero
+     * @param matricula a insertar
+     * @throws FicheroException con un mensaje controlado
+     * @throws VehiculoException con un mensaje controlado
+     */
+    public void insertar(Vehiculo vehiculo) throws FicheroException, VehiculoException{
+<span class="fc" id="L46">        validar(vehiculo);</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (!existe(vehiculo)) {</span>
+<span class="fc" id="L48">            modeloVehiculo.insertar(vehiculo);</span>
+        }
+<span class="fc" id="L50">    }</span>
+
+    /**
+     * Metodo encargado de eliminar un vehiculo del fichero
+     * @param vehiculo a eliminar
+     * @throws VehiculoException con un mensaje controlado
+     * @throws FicheroException con un mensaje controlado
+     */
+    public void eliminar(Vehiculo vehiculo) throws VehiculoException, FicheroException{
+<span class="fc" id="L59">        validar(vehiculo);</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if(!existe(vehiculo)){</span>
+<span class="fc" id="L61">            throw new VehiculoException(EL_VEHICULO_INDICADO_NO_EXISTE);</span>
+        }
+<span class="fc" id="L63">        modeloVehiculo.eliminar(vehiculo);</span>
+        
+<span class="fc" id="L65">    }</span>
+
+    /**
+     * Funcion que determina si existe un elemento
+     * @param matricula a buscar
+     * @return true si existe, false si no existe
+     * @throws FicheroException con un mensaje controlado
+     */
+    public boolean existe(Vehiculo vehiculo) throws FicheroException {
+<span class="fc" id="L74">        boolean encontrada = false;</span>
+        Vehiculo vehiculoEncontrado;
+
+<span class="fc" id="L77">        vehiculoEncontrado = buscar(vehiculo.getMatricula());</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if(vehiculoEncontrado != null){</span>
+<span class="fc" id="L79">            encontrada = true;</span>
+        }
+        
+<span class="fc" id="L82">        return encontrada;</span>
+    }
+
+    /**
+     * Funcion encargada de buscar un vehiculo por su matricula
+     * @param matricula a buscar
+     * @return Vehiculo
+     * @throws FicheroException con un mensaje controlado
+     */
+    public Vehiculo buscar(String matricula) throws FicheroException {
+<span class="fc" id="L92">        Vehiculo vehiculo = null;</span>
+<span class="fc" id="L93">        vehiculo = modeloVehiculo.buscar(matricula);</span>
+<span class="fc" id="L94">        return vehiculo;</span>
+    }
+
+    /**
+    * Metodo encargado de realizar la modificacion de una fruta
+    * @param fruta a modficar
+    * @throws FrutaException controlada en caso de error
+    * @throws FicheroException
+    */
+    public void modificar(Vehiculo vehiculoAlmacenado, Vehiculo vehiculo) throws VehiculoException, FicheroException {   
+<span class="fc" id="L104">        validar(vehiculo);</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        if(!existe(vehiculoAlmacenado)){</span>
+<span class="fc" id="L106">            throw new VehiculoException(EL_VEHICULO_INDICADO_NO_EXISTE);</span>
+        }
+<span class="fc" id="L108">        modeloVehiculo.modificar(vehiculoAlmacenado, vehiculo);</span>
+<span class="fc" id="L109">    }</span>
+
+    /**
+     * Funcion encargada de listar todos los vehiculos del fichero
+     * @return arrayList
+     * @throws FicheroException con un mensaje controlado
+     */
+    public ArrayList&lt;Vehiculo&gt; listar() throws FicheroException{
+<span class="fc" id="L117">        return modeloVehiculo.listar();</span>
+    }
+
+    /**
+     * Funcion encargada de mostrar un vehiculo sabiendo su matricula
+     * @param matricula del vehiculo a listar
+     * @return Vehiculo
+     * @throws FicheroException con un mensaje controlado
+     */
+    public Vehiculo listar(String matricula) throws FicheroException{
+<span class="fc" id="L127">        return modeloVehiculo.listar(matricula);</span>
+    }
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

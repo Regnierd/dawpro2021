@@ -3,13 +3,106 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import es.iespuertodelacruz.javier.api.Fruta;
 import es.iespuertodelacruz.javier.exception.FicheroException;
 
-<span class="fc" id="L10">public class Fichero {</span>
+<span class="fc" id="L12">public class Fichero {</span>
     private static final String RETORNO_CARRO = &quot;\n&quot;;
+    private static final String NOMBRE_FICHERO = &quot;Fichero-frutas.txt&quot;;
+    private static final String SE_HA_PRODUCIDO_UN_ERROR_EN_EL_VOLCADO_DEL_FICHERO = &quot;Se ha producido un error en el volcado del fichero&quot;;
+    
+    /**
+     * Metodo encargado de almacenar una fruta en el fichero
+     * @param fruta
+     * @throws FicheroException
+     */
+    public void insertar(Fruta fruta) throws FicheroException{
+      //1. obtener la lista de frutas del fichero
+      ArrayList&lt;Fruta&gt; listado;
+<span class="nc" id="L25">      listado = obtenerListado();</span>
+      //2 insertar la fruta al final de la lista
+<span class="nc" id="L27">      listado.add(fruta);</span>
+      //3. volcar al fichero toda la informacion
+      try {
+<span class="nc" id="L30">         crear(NOMBRE_FICHERO, listado.toString());</span>
+<span class="nc" id="L31">      } catch (FicheroException e) {</span>
+<span class="nc" id="L32">         throw new FicheroException(SE_HA_PRODUCIDO_UN_ERROR_EN_EL_VOLCADO_DEL_FICHERO, e);</span>
+<span class="nc" id="L33">      }</span>
+<span class="nc" id="L34">    }</span>
 
+    /**
+     * Metodo encargado de eliminar una fruta del fichero
+     * @param fruta
+    * @throws FicheroException
+     */
+    public void eliminar(Fruta fruta) throws FicheroException{
+       //1. obtener la lista de frutas del fichero
+       ArrayList&lt;Fruta&gt; listado;
+<span class="nc" id="L44">       listado = obtenerListado();</span>
+       //2 eliminar la fruta al final de la lista
+<span class="nc" id="L46">       listado.remove(fruta);</span>
+       //3. volcar al fichero toda la informacion
+
+       try {
+<span class="nc" id="L50">          crear(NOMBRE_FICHERO, listado.toString());</span>
+<span class="nc" id="L51">       } catch (FicheroException e) {</span>
+<span class="nc" id="L52">          throw new FicheroException(SE_HA_PRODUCIDO_UN_ERROR_EN_EL_VOLCADO_DEL_FICHERO, e);</span>
+<span class="nc" id="L53">       }</span>
+      
+<span class="nc" id="L55">    }</span>
+
+    /**
+    * Metodo encargado de modificar un elemento del fichero
+    * @param frutaAlamcenada elemento a actualizar
+    * @param fruta elemento con la informacion actualizada
+    * @throws FicheroException
+    */
+   public void modificar (Fruta frutaAlmacenada, Fruta fruta) throws FicheroException {
+<span class="nc" id="L64">      ArrayList&lt;Fruta&gt; listado = obtenerListado(); </span>
+<span class="nc" id="L65">      int posicion = -1;</span>
+<span class="nc" id="L66">      posicion = listado.indexOf(frutaAlmacenada);</span>
+<span class="nc" id="L67">      listado.remove(posicion);</span>
+<span class="nc" id="L68">      listado.add(posicion, fruta);</span>
+<span class="nc" id="L69">      crear(NOMBRE_FICHERO, listado.toString());</span>
+      
+<span class="nc" id="L71">   }</span>
+
+    /**
+     * Funcion encargada de obtener el listado de frutas del fichero
+     * @return listado de frutas
+    * @throws FicheroException
+     */
+    public ArrayList&lt;Fruta&gt; obtenerListado() throws FicheroException{
+<span class="nc" id="L79">      ArrayList&lt;Fruta&gt; lista = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L80">      File fichero = null;</span>
+<span class="nc" id="L81">      Scanner scanner = null;</span>
+
+      try {
+<span class="nc" id="L84">         fichero = new File(NOMBRE_FICHERO);</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">         if (!validarFichero(fichero)) {</span>
+<span class="nc" id="L86">            throw new FicheroException(&quot;El fichero a leer no existe&quot;);</span>
+         }
+<span class="nc" id="L88">         scanner = new Scanner(fichero);</span>
+
+<span class="nc bnc" id="L90" title="All 2 branches missed.">         while (scanner.hasNextLine()) {</span>
+<span class="nc" id="L91">            String linea = scanner.nextLine(); // Guardamos la linea en un String</span>
+<span class="nc" id="L92">            Fruta fruta = new Fruta(linea);</span>
+<span class="nc" id="L93">            lista.add(fruta);</span>
+<span class="nc" id="L94">         }</span>
+<span class="nc" id="L95">      } catch (FicheroException e) {  </span>
+<span class="nc" id="L96">            throw e;</span>
+<span class="nc" id="L97">      }catch (Exception e) {</span>
+<span class="nc" id="L98">            throw new FicheroException(&quot;Se ha producido un error en la lectura del fichero&quot;, e);</span>
+      } finally {
+<span class="nc bnc" id="L100" title="All 2 branches missed.">         if (scanner != null) {</span>
+<span class="nc" id="L101">            scanner.close();</span>
+         }
+      }
+<span class="nc" id="L104">      return lista; </span>
+    }
    /**
     * Funcion encargada de leer un ficher
     * 
@@ -17,32 +110,32 @@ import es.iespuertodelacruz.javier.exception.FicheroException;
     * @throws FicheroException Error controlado en la lectura del fichero
     */
    public String leer(String nombre) throws FicheroException {
-<span class="nc" id="L20">      StringBuilder informacion = null;</span>
-<span class="nc" id="L21">      File fichero = null;</span>
-<span class="nc" id="L22">      Scanner scanner = null;</span>
+<span class="nc" id="L113">      StringBuilder informacion = null;</span>
+<span class="nc" id="L114">      File fichero = null;</span>
+<span class="nc" id="L115">      Scanner scanner = null;</span>
 
       try {
-<span class="nc" id="L25">         fichero = new File(nombre);</span>
-<span class="nc bnc" id="L26" title="All 2 branches missed.">         if (!validarFichero(fichero)) {</span>
-<span class="nc" id="L27">            throw new FicheroException(&quot;El fichero a leer no existe&quot;);</span>
+<span class="nc" id="L118">         fichero = new File(nombre);</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">         if (!validarFichero(fichero)) {</span>
+<span class="nc" id="L120">            throw new FicheroException(&quot;El fichero a leer no existe&quot;);</span>
          }
-<span class="nc" id="L29">         informacion = new StringBuilder();</span>
-<span class="nc" id="L30">         scanner = new Scanner(fichero);</span>
+<span class="nc" id="L122">         informacion = new StringBuilder();</span>
+<span class="nc" id="L123">         scanner = new Scanner(fichero);</span>
 
-<span class="nc bnc" id="L32" title="All 2 branches missed.">         while (scanner.hasNextLine()) {</span>
-<span class="nc" id="L33">            String linea = scanner.nextLine(); // Guardamos la linea en un String</span>
-<span class="nc" id="L34">            informacion.append(linea + RETORNO_CARRO);</span>
-<span class="nc" id="L35">         }</span>
-<span class="nc" id="L36">      } catch (FicheroException e) {  </span>
-<span class="nc" id="L37">            throw e;</span>
-<span class="nc" id="L38">      }catch (Exception e) {</span>
-<span class="nc" id="L39">            throw new FicheroException(&quot;Se ha producido un error en la lectura del fichero&quot;, e);</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">         while (scanner.hasNextLine()) {</span>
+<span class="nc" id="L126">            String linea = scanner.nextLine(); // Guardamos la linea en un String</span>
+<span class="nc" id="L127">            informacion.append(linea + RETORNO_CARRO);</span>
+<span class="nc" id="L128">         }</span>
+<span class="nc" id="L129">      } catch (FicheroException e) {  </span>
+<span class="nc" id="L130">            throw e;</span>
+<span class="nc" id="L131">      }catch (Exception e) {</span>
+<span class="nc" id="L132">            throw new FicheroException(&quot;Se ha producido un error en la lectura del fichero&quot;, e);</span>
       } finally {
-<span class="nc bnc" id="L41" title="All 2 branches missed.">         if (scanner != null) {</span>
-<span class="nc" id="L42">            scanner.close();</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">         if (scanner != null) {</span>
+<span class="nc" id="L135">            scanner.close();</span>
          }
       }
-<span class="nc" id="L45">      return informacion.toString();</span>
+<span class="nc" id="L138">      return informacion.toString();</span>
    }
 
    /**
@@ -51,23 +144,23 @@ import es.iespuertodelacruz.javier.exception.FicheroException;
     * @throws FicheroException error controlado
     */
    public void crear(String nombre, String cadenaTexto) throws FicheroException {
-<span class="nc" id="L54">      FileWriter fichero = null;</span>
+<span class="nc" id="L147">      FileWriter fichero = null;</span>
       try {
-<span class="nc" id="L56">			fichero = new FileWriter(nombre);</span>
-<span class="nc" id="L57">         fichero.write(cadenaTexto + &quot;\n&quot;);</span>
-<span class="nc" id="L58">		} catch (Exception ex) {</span>
-<span class="nc" id="L59">			throw new FicheroException(&quot;Se ha producido un error en la escritura del fichero&quot;, ex);</span>
+<span class="nc" id="L149">			fichero = new FileWriter(nombre);</span>
+<span class="nc" id="L150">         fichero.write(cadenaTexto + &quot;\n&quot;);</span>
+<span class="nc" id="L151">		} catch (Exception ex) {</span>
+<span class="nc" id="L152">			throw new FicheroException(&quot;Se ha producido un error en la escritura del fichero&quot;, ex);</span>
 		} finally {
-<span class="nc bnc" id="L61" title="All 2 branches missed.">         if (fichero != null) {</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">         if (fichero != null) {</span>
             try {
-<span class="nc" id="L63">               fichero.close();</span>
-<span class="nc" id="L64">            } catch (IOException e) {</span>
-<span class="nc" id="L65">               throw new FicheroException(&quot;No ha sido podible cerrar el fichero&quot;, e);</span>
-<span class="nc" id="L66">            }</span>
+<span class="nc" id="L156">               fichero.close();</span>
+<span class="nc" id="L157">            } catch (IOException e) {</span>
+<span class="nc" id="L158">               throw new FicheroException(&quot;No ha sido podible cerrar el fichero&quot;, e);</span>
+<span class="nc" id="L159">            }</span>
          }
       }
 
-<span class="nc" id="L70">   }</span>
+<span class="nc" id="L163">   }</span>
 
    /**
     * Funcion que verifica si el fichero existo
@@ -75,7 +168,7 @@ import es.iespuertodelacruz.javier.exception.FicheroException;
     * @return true si existe, false si no existe
     */
    public boolean validarFichero(File fichero) {
-<span class="nc" id="L78">      return fichero.exists();</span>
+<span class="nc" id="L171">      return fichero.exists();</span>
    }
 
    /**
@@ -84,22 +177,22 @@ import es.iespuertodelacruz.javier.exception.FicheroException;
     * @throws FicheroException error controlado
     */
    public void eliminar(String nombre) throws FicheroException {
-<span class="nc" id="L87">      File fichero = new File(nombre);</span>
-<span class="nc bnc" id="L88" title="All 2 branches missed.">      if (validarFichero(fichero)) {</span>
-<span class="nc" id="L89">         fichero.delete();</span>
+<span class="nc" id="L180">      File fichero = new File(nombre);</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">      if (validarFichero(fichero)) {</span>
+<span class="nc" id="L182">         fichero.delete();</span>
       } else {
-<span class="nc" id="L91">         throw new FicheroException(&quot;No se puede eliminar un fichero que no existe&quot;);</span>
+<span class="nc" id="L184">         throw new FicheroException(&quot;No se puede eliminar un fichero que no existe&quot;);</span>
       }
       
-<span class="nc" id="L94">   }</span>
+<span class="nc" id="L187">   }</span>
    /**
     * Funcion que verifica si se trata de un directorio no
     * @param path de la ruta a validad
     * @return boolean Si/No se trata de un directorio
     */
    public boolean esDirectorio(String path) {
-<span class="nc" id="L101">      File fichero = new File(path);</span>
-<span class="nc" id="L102">      return fichero.isDirectory();</span>
+<span class="nc" id="L194">      File fichero = new File(path);</span>
+<span class="nc" id="L195">      return fichero.isDirectory();</span>
    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

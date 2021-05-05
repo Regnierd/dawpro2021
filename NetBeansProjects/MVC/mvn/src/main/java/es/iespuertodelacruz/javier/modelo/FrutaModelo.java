@@ -47,7 +47,7 @@ public class FrutaModelo {
 
     public void modificar(Fruta frutaAlmacenada, Fruta fruta) throws FicheroException {
         fichero.modificar(frutaAlmacenada, fruta);
-     }
+    }
 
 
     

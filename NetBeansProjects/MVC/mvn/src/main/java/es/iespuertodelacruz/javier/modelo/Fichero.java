@@ -13,10 +13,11 @@ public class Fichero {
     private static final String RETORNO_CARRO = "\n";
     private static final String NOMBRE_FICHERO = "Fichero-frutas.txt";
     private static final String SE_HA_PRODUCIDO_UN_ERROR_EN_EL_VOLCADO_DEL_FICHERO = "Se ha producido un error en el volcado del fichero";
+    
     /**
      * Metodo encargado de almacenar una fruta en el fichero
      * @param fruta
-    * @throws FicheroException
+     * @throws FicheroException
      */
     public void insertar(Fruta fruta) throws FicheroException{
       //1. obtener la lista de frutas del fichero

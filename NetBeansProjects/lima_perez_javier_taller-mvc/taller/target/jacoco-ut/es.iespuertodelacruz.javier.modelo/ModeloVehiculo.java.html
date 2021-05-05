@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ModeloVehiculo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">taller</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier.modelo</a> &gt; <span class="el_source">ModeloVehiculo.java</span></div><h1>ModeloVehiculo.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier.modelo;
+
+import java.util.ArrayList;
+
+import es.iespuertodelacruz.javier.api.Vehiculo;
+import es.iespuertodelacruz.javier.exceptions.FicheroException;
+
+public class ModeloVehiculo {
+    Fichero fichero;
+
+<span class="fc" id="L11">    public ModeloVehiculo(){</span>
+<span class="fc" id="L12">        fichero = new Fichero();</span>
+<span class="fc" id="L13">    }</span>
+
+    /**
+     * Metodo encargado de insertar en una lista un vehiculo llamando a fichero
+     * @param vehiculo a insertar
+     * @throws FicheroException con un mensaje controlado
+     */
+    public void insertar(Vehiculo vehiculo) throws FicheroException{
+<span class="fc" id="L21">        fichero.insertar(vehiculo);</span>
+<span class="fc" id="L22">    }</span>
+
+    /**
+     * Metodo encargado de eliminar en la lista un vehiculo llamando a fichero
+     * @param vehiculo a eliminar
+     * @throws FicheroException con un mensaje controlado
+     */
+    public void eliminar(Vehiculo vehiculo) throws FicheroException{
+<span class="fc" id="L30">        fichero.eliminar(vehiculo);</span>
+<span class="fc" id="L31">    }</span>
+
+    /**
+    * Funcion que busca un vehiculo a traves de la matricula
+    * @param matricula del vehiculo
+    * @return Vehiculo con la matricula especificada
+    * @throws FicheroException con un mensaje controlado
+    */
+    public Vehiculo buscar(String matricula) throws FicheroException {
+<span class="fc" id="L40">        Vehiculo vehiculo = null;</span>
+        ArrayList&lt;Vehiculo&gt; listado;
+<span class="fc" id="L42">        listado = fichero.obtenerListado();</span>
+<span class="fc" id="L43">        int i = 0;</span>
+<span class="fc bfc" id="L44" title="All 4 branches covered.">        while(i &lt; listado.size() &amp;&amp; vehiculo == null) {</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            if (matricula.equals(listado.get(i).getMatricula())) {</span>
+<span class="fc" id="L46">                vehiculo = listado.get(i);</span>
+            }
+<span class="fc" id="L48">            i++;</span>
+        }
+<span class="fc" id="L50">        return vehiculo;</span>
+    }
+
+    /**
+     * Metodo encargado de modificar un vehiculo en el fichero
+     * @param vehiculoAlmacenado en la lista
+     * @param vehiculo a modificar
+     * @throws FicheroException con un mensaje controlado
+     */
+    public void modificar(Vehiculo vehiculoAlmacenado, Vehiculo vehiculo) throws FicheroException {
+<span class="fc" id="L60">        fichero.modificar(vehiculoAlmacenado, vehiculo);</span>
+<span class="fc" id="L61">    }</span>
+
+    /**
+     * Funcion encargada de listar todos los vehiculos del fichero
+     * @return arrayList
+     * @throws FicheroException con un mensaje controlado
+     */
+    public ArrayList&lt;Vehiculo&gt; listar() throws FicheroException{
+<span class="fc" id="L69">        return fichero.obtenerListado();</span>
+    }
+
+    /**
+     * Funcion encargada de mostrar un vehiculo sabiendo su matricula
+     * @param matricula del vehiculo a listar
+     * @return Vehiculo
+     * @throws FicheroException con un mensaje controlador
+     */
+    public Vehiculo listar(String matricula) throws FicheroException{
+<span class="fc" id="L79">        ArrayList&lt;Vehiculo&gt; vehiculos = fichero.obtenerListado();</span>
+<span class="fc" id="L80">        Vehiculo vehiculoEncontrado = null;</span>
+<span class="fc" id="L81">        int i = 0;</span>
+<span class="fc bfc" id="L82" title="All 4 branches covered.">        while(i &lt; vehiculos.size() &amp;&amp; vehiculoEncontrado == null){</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">            if(matricula.equals(vehiculos.get(i).getMatricula())){</span>
+<span class="fc" id="L84">                vehiculoEncontrado = vehiculos.get(i);</span>
+            }
+<span class="fc" id="L86">            i++;</span>
+        }       
+<span class="fc" id="L88">        return vehiculoEncontrado;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

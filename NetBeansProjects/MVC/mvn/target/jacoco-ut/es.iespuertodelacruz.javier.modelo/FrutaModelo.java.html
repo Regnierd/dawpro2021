@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FrutaModelo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mvn-Calculadora</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier.modelo</a> &gt; <span class="el_source">FrutaModelo.java</span></div><h1>FrutaModelo.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier.modelo;
 
+import java.util.ArrayList;
+
 import es.iespuertodelacruz.javier.api.Fruta;
+import es.iespuertodelacruz.javier.exception.FicheroException;
 
 public class FrutaModelo {
     Fichero fichero;
 
-<span class="fc" id="L8">    public FrutaModelo(){</span>
-<span class="fc" id="L9">        fichero = new Fichero();</span>
-<span class="fc" id="L10">    }</span>
+<span class="fc" id="L11">    public FrutaModelo(){</span>
+<span class="fc" id="L12">        fichero = new Fichero();</span>
+<span class="fc" id="L13">    }</span>
 
-    public void insertar(Fruta fruta){
-        //lo que sea
-<span class="nc" id="L14">    }</span>
+    public void insertar(Fruta fruta) throws FicheroException{
+<span class="nc" id="L16">        fichero.insertar(fruta);</span>
+<span class="nc" id="L17">    }</span>
 
-    public void eliminar(Fruta fruta){
-        //lo que sea
-<span class="nc" id="L18">    }</span>
+    public void eliminar(Fruta fruta) throws FicheroException{
+<span class="nc" id="L20">        fichero.eliminar(fruta);</span>
+<span class="nc" id="L21">    }</span>
 
-    public Fruta buscar(String identificador){
-<span class="nc" id="L21">        Fruta fruta = null;</span>
-
-<span class="nc" id="L23">        return fruta;</span>
+    /**
+    * Funcion que busca una fruta a traves del identificar
+    * @param identificador de la fruta
+    * @return Fruta con el identificador especificado
+    * @throws FicheroException
+    */
+   public Fruta buscar(String identificador) throws FicheroException {
+<span class="nc" id="L30">    Fruta fruta = null;</span>
+    ArrayList&lt;Fruta&gt; listado;
+<span class="nc" id="L32">    listado = fichero.obtenerListado();</span>
+<span class="nc" id="L33">    int i = 0;</span>
+<span class="nc bnc" id="L34" title="All 4 branches missed.">    while(i &lt; listado.size() &amp;&amp; fruta == null) {</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">       if (identificador.equals(listado.get(i).getIdentificador())) {</span>
+<span class="nc" id="L36">          fruta = listado.get(i);</span>
+       }
+<span class="nc" id="L38">       i++;</span>
     }
+
+<span class="nc" id="L41">    return fruta;</span>
+  }
 
     public void listar(){
         //lo que sea
-<span class="nc" id="L28">    }</span>
+<span class="nc" id="L46">    }</span>
 
-    public void modificar(Fruta fruta) {
-        //lo que sea
-<span class="nc" id="L32">    }</span>
+    public void modificar(Fruta frutaAlmacenada, Fruta fruta) throws FicheroException {
+<span class="nc" id="L49">        fichero.modificar(frutaAlmacenada, fruta);</span>
+<span class="nc" id="L50">    }</span>
 
 
     

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Fruta.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mvn-Calculadora</a> &gt; <a href="index.source.html" class="el_package">es.iespuertodelacruz.javier.api</a> &gt; <span class="el_source">Fruta.java</span></div><h1>Fruta.java</h1><pre class="source lang-java linenums">package es.iespuertodelacruz.javier.api;
 
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * Clase fruta de la aplicacion
@@ -9,10 +11,11 @@ public class Fruta {
     String identificador;
     float precio;
     float coste;
+    private static final String DELIMITADOR = &quot;,&quot;;
 
-<span class="fc" id="L13">    public Fruta(){</span>
-        
-<span class="fc" id="L15">    }</span>
+<span class="fc" id="L16">    public Fruta(){</span>
+
+<span class="fc" id="L18">    }</span>
     /**
      * Constructor con todas las propiedades de la fruta
      * @param nombre de la fruta
@@ -20,63 +23,75 @@ public class Fruta {
      * @param precio de la fruta
      * @param coste de la fruta
      */
-<span class="fc" id="L23">    public Fruta(String nombre, String identificador, float precio, float coste) {</span>
-<span class="fc" id="L24">        this.nombre = nombre;</span>
-<span class="fc" id="L25">        this.identificador = identificador;</span>
-<span class="fc" id="L26">        this.precio = precio;</span>
-<span class="fc" id="L27">        this.coste = coste;</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L26">    public Fruta(String nombre, String identificador, float precio, float coste) {</span>
+<span class="fc" id="L27">        this.nombre = nombre;</span>
+<span class="fc" id="L28">        this.identificador = identificador;</span>
+<span class="fc" id="L29">        this.precio = precio;</span>
+<span class="fc" id="L30">        this.coste = coste;</span>
+<span class="fc" id="L31">    }</span>
+
+    /**
+    * Constructo que recibe una cadena de text
+    * @param cadena con la informacion
+    */
+<span class="nc" id="L37">   public Fruta(String cadena) {</span>
+<span class="nc" id="L38">    ArrayList&lt;Object&gt; elementos = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L39">    StringTokenizer tokenizer = new StringTokenizer(cadena, DELIMITADOR);</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">    while (tokenizer.hasMoreElements()) {</span>
+<span class="nc" id="L41">       elementos.add(tokenizer.nextToken());</span>
+    }
+<span class="nc" id="L43">    this.identificador = (String) elementos.get(0);</span>
+<span class="nc" id="L44">    this.nombre = (String) elementos.get(1);</span>
+<span class="nc" id="L45">    this.precio = Float.parseFloat((String)elementos.get(2));</span>
+<span class="nc" id="L46">    this.coste = Float.parseFloat((String)elementos.get(3));</span>
+<span class="nc" id="L47"> }</span>
 
     public String getNombre() {
-<span class="fc" id="L31">        return this.nombre;</span>
+<span class="fc" id="L50">        return this.nombre;</span>
     }
 
     public void setNombre(String nombre) {
-<span class="fc" id="L35">        this.nombre = nombre;</span>
-<span class="fc" id="L36">    }</span>
+<span class="fc" id="L54">        this.nombre = nombre;</span>
+<span class="fc" id="L55">    }</span>
 
     public String getIdentificador() {
-<span class="fc" id="L39">        return this.identificador;</span>
+<span class="fc" id="L58">        return this.identificador;</span>
     }
 
     public void setIdentificador(String identificador) {
-<span class="fc" id="L43">        this.identificador = identificador;</span>
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L62">        this.identificador = identificador;</span>
+<span class="fc" id="L63">    }</span>
 
     public float getPrecio() {
-<span class="fc" id="L47">        return this.precio;</span>
+<span class="fc" id="L66">        return this.precio;</span>
     }
 
     public void setPrecio(float precio) {
-<span class="fc" id="L51">        this.precio = precio;</span>
-<span class="fc" id="L52">    }</span>
+<span class="fc" id="L70">        this.precio = precio;</span>
+<span class="fc" id="L71">    }</span>
 
     public float getCoste() {
-<span class="fc" id="L55">        return this.coste;</span>
+<span class="fc" id="L74">        return this.coste;</span>
     }
 
     public void setCoste(float coste) {
-<span class="fc" id="L59">        this.coste = coste;</span>
-<span class="fc" id="L60">    }</span>
+<span class="fc" id="L78">        this.coste = coste;</span>
+<span class="fc" id="L79">    }</span>
 
     /**
      * Funcion encargado para devolver el beneficio de la fruta
      * @return float
      */
     public float beneficio(){
-<span class="fc" id="L67">        return precio - coste;</span>
+<span class="fc" id="L86">        return precio - coste;</span>
     }
 
 
     @Override
-    public String toString() {
-<span class="nc" id="L73">        return &quot;{&quot; +</span>
-<span class="nc" id="L74">            &quot; nombre='&quot; + getNombre() + &quot;'&quot; +</span>
-<span class="nc" id="L75">            &quot;, identificador='&quot; + getIdentificador() + &quot;'&quot; +</span>
-<span class="nc" id="L76">            &quot;, precio='&quot; + getPrecio() + &quot;'&quot; +</span>
-<span class="nc" id="L77">            &quot;, coste='&quot; + getCoste() + &quot;'&quot; +</span>
-            &quot;}&quot;;
-    }
+   public String toString() {
+<span class="nc" id="L92">      return getIdentificador() + DELIMITADOR + getNombre() + DELIMITADOR + getPrecio() + DELIMITADOR + getCoste();</span>
+   }
+
 
 }
 

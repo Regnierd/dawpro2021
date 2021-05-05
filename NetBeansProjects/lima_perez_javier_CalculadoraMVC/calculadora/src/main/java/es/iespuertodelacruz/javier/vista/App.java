@@ -10,7 +10,7 @@ import es.iespuertodelacruz.javier.exception.OperacionException;
 public class App {
     static OperacionController operacionController;
     static Scanner sn = new Scanner(System.in);
-    public static void main( String[] args ) throws OperacionException{
+    public static void main( String[] args ){
         if(operacionController == null){
             operacionController = new OperacionController();
         }

@@ -2,20 +2,25 @@
 
 import es.iespuertodelacruz.javier.api.Fruta;
 import es.iespuertodelacruz.javier.controlador.FrutaController;
+import es.iespuertodelacruz.javier.exception.FicheroException;
 import es.iespuertodelacruz.javier.exception.FrutaException;
 
 public class AppFruteria {
     FrutaController frutaController;
 
-<span class="nc" id="L10">    public AppFruteria(){</span>
-<span class="nc" id="L11">        frutaController = new FrutaController();</span>
-<span class="nc" id="L12">    }</span>
+<span class="nc" id="L11">    public AppFruteria(){</span>
+<span class="nc" id="L12">        frutaController = new FrutaController();</span>
+<span class="nc" id="L13">    }</span>
     public static void main(String[] args){
         //asdf
-<span class="nc" id="L15">    }</span>
+<span class="nc" id="L16">    }</span>
+    
+    public void insertar(Fruta fruta) throws FrutaException, FicheroException{
+<span class="nc" id="L19">        frutaController.insertar(fruta);</span>
+<span class="nc" id="L20">    }</span>
 
-    public void insertar(Fruta fruta) throws FrutaException{
-<span class="nc" id="L18">        frutaController.insertar(fruta);</span>
-<span class="nc" id="L19">    }</span>
+    public void eliminar(Fruta fruta) throws FrutaException, FicheroException{
+<span class="nc" id="L23">        frutaController.insertar(fruta);</span>
+<span class="nc" id="L24">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
